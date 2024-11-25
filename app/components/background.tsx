@@ -2,32 +2,24 @@
 
 const Background = () => {
   return (
-    <div className="fixed inset-0 -z-10 h-full w-full">
-      {/* Dot pattern */}
+    <div className="absolute inset-0 -z-10 overflow-hidden">
       <div 
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 bg-gradient-to-br from-blue-900 to-blue-700 opacity-70"
+        aria-hidden="true"
+      />
+      <div 
+        className="absolute inset-0"
         style={{
-          backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
-          backgroundSize: '20px 20px',
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322d3ee' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px'
         }}
       />
-      
-      {/* Gradient overlay */}
       <div 
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-primary/10 via-background to-secondary/10" 
-      />
-      
-      {/* Gradient blobs */}
-      <div 
-        className="absolute left-[10%] top-[20%] -z-10 h-[300px] w-[300px] rounded-full bg-primary/20 blur-[100px]"
-        style={{ animation: 'move 20s infinite' }}
-      />
-      <div 
-        className="absolute right-[10%] bottom-[20%] -z-10 h-[300px] w-[300px] rounded-full bg-secondary/20 blur-[100px]"
-        style={{ animation: 'move 25s infinite' }}
+        className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"
+        aria-hidden="true"
       />
     </div>
   )
 }
 
-export default Background;
+export default Background

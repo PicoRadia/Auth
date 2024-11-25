@@ -9,7 +9,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     // Get current hour in 24-hour format
     const currentHour = new Date().getHours()
     // Consider "night" between 8 PM (20) and 6 AM (6)
-    const isDarkHours = currentHour >= 20 || currentHour < 8
+    const isDarkHours = currentHour >= 20 || currentHour < 9
     
     // Set initial theme based on time
     if (isDarkHours) {
