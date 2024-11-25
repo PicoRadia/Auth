@@ -9,31 +9,12 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/app/components/ui/tabs"
 import { Separator } from "@/app/components/ui/separator"
 import GoogleSignInButton from '@/app/components/GoogleSignInButton'
-
-
+import { SignInForm } from '@/app/components/SignInForm'
+import { SignUpForm } from '@/app/components/SignUpForm'
 
 export default function AuthPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const router = useRouter()
-
-  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setIsLoading(true)
-
-    const formData = new FormData(event.currentTarget)
-    const email = formData.get('email')
-    const password = formData.get('password')
-
-    // TODO: Implement actual authentication logic here
-    console.log('Authentification avec:', email, password)
-
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-
-    setIsLoading(false)
-    // Redirect to dashboard after successful auth
-    router.push('/tableau-de-bord')
-  }
 
   return (
     <div className="flex items-center justify-center min-h-screen">
@@ -49,42 +30,10 @@ export default function AuthPage() {
               <TabsTrigger value="signup">Inscription</TabsTrigger>
             </TabsList>
             <TabsContent value="signin">
-              <form onSubmit={onSubmit}>
-                <div className="grid w-full items-center gap-4">
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="signin-email">E-mail</Label>
-                    <Input id="signin-email" name="email" type="email" placeholder="m@exemple.com" required />
-                  </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="signin-password">Mot de passe</Label>
-                    <Input id="signin-password" name="password" type="password" required />
-                  </div>
-                </div>
-                <Button className="w-full mt-4" type="submit" disabled={isLoading}>
-                  {isLoading ? "Connexion en cours..." : "Se connecter"}
-                </Button>
-              </form>
+              <SignInForm isLoading={isLoading} />
             </TabsContent>
             <TabsContent value="signup">
-              <form onSubmit={onSubmit}>
-                <div className="grid w-full items-center gap-4">
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="signup-email">E-mail</Label>
-                    <Input id="signup-email" name="email" type="email" placeholder="m@exemple.com" required />
-                  </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="signup-password">Mot de passe</Label>
-                    <Input id="signup-password" name="password" type="password" required />
-                  </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="signup-confirm-password">Confirmer le mot de passe</Label>
-                    <Input id="signup-confirm-password" name="confirmPassword" type="password" required />
-                  </div>
-                </div>
-                <Button className="w-full mt-4" type="submit" disabled={isLoading}>
-                  {isLoading ? "Inscription en cours..." : "S'inscrire"}
-                </Button>
-              </form>
+              <SignUpForm isLoading={isLoading} />
             </TabsContent>
           </Tabs>
           <div className="relative my-4">

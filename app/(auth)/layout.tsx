@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/app/components/theme-provider";
 import '@/styles/theme.css'
 import '@/styles/layout.css'
 import '@/app/globals.css'
-import Background from "../components/background";
+
 
 const geistSans = localFont({
   src: "../fonts/GeistMonoVF.woff",
