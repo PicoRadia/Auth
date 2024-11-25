@@ -55,20 +55,15 @@
   /* Main styles */
   body {
     
-    color: #999;
-    font: 400 16px/1.5 exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
-    text-align: center;
-    /* img size is 50x50 */
-    background: var(--bg-url) repeat 0 0;
-    
-    -webkit-animation: bg-scrolling-reverse 8s infinite; /* Safari 4+ */
-    -moz-animation: bg-scrolling-reverse 8s infinite; /* Fx 5+ */
-    -o-animation: bg-scrolling-reverse 8s infinite; /* Opera 12+ */
-    animation: bg-scrolling-reverse 8s infinite; /* IE 10+ */
-    -webkit-animation-timing-function: linear;
-    -moz-animation-timing-function: linear;
-    -o-animation-timing-function: linear;
-    animation-timing-function: linear;
+    background: 
+    radial-gradient(circle at center, rgba(15, 17, 23, 0.6) 0%, rgba(9, 10, 15, 0.7) 80%),
+    /*url('https://images.theecoexperts.co.uk/wp-content/uploads/2023/07/Solar-panel-installers-on-roof-1.jpeg?width=744&height=495&format=webply') center/cover no-repeat;*/
+   url('https://sistinesolar.com/wp-content/uploads/2023/08/Best-Residential-Solar-Panels-For-Aesthetics.jpg' )  center/cover no-repeat;
+   
   }
   
  
+/*
+https://5.imimg.com/data5/SELLER/Default/2021/3/WV/HJ/NK/90240568/solar-panel-installation-service-500x500.jpg
+
+*/
