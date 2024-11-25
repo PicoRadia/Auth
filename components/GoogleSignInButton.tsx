@@ -13,7 +13,7 @@ const GoogleSignInButton = () => {
   const handleGoogleSignIn = async () => {
     try {
       setIsLoading(true)
-      await signIn('google', { callbackUrl: '/' })
+      await signIn('google', { callbackUrl: '/' , redirectTo: "/dashboard" })
     } catch (error) {
       // Handle error if needed
       console.error('Error signing in with Google:', error)
