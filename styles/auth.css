@@ -1,0 +1,24 @@
+/* Authentication-related styles */
+.auth-container {
+  @apply flex min-h-screen flex-col items-center justify-center p-4;
+}
+
+.auth-card {
+  @apply w-full max-w-md bg-card rounded-lg shadow-lg;
+}
+
+.auth-header {
+  @apply space-y-2 text-center p-6;
+}
+
+.auth-form {
+  @apply space-y-4 p-6;
+}
+
+.auth-input {
+  @apply w-full rounded-md border border-input px-3 py-2;
+}
+
+.auth-button {
+  @apply w-full rounded-md bg-primary text-primary-foreground py-2;
+} 
