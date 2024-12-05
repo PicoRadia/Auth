@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/app/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,38 +8,37 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/app/components/ui/dropdown-menu"
 import { signOut, useSession } from "next-auth/react"
 import Link from "next/link"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { Avatar, AvatarFallback, AvatarImage } from "@/app/components/ui/avatar"
 
 export function Navbar() {
   const { data: session } = useSession()
 
   return (
     <nav className="border-b bg-background h-[60px] fixed w-full z-50 top-0">
-      <div className="container flex items-center justify-between h-full">
+      <div className="container flex items-center justify-between h-full px-4">
         {/* Logo/Brand */}
         <Link href="/" className="font-semibold text-xl">
           YourBrand
         </Link>
 
-        {/* Navigation Links - Hidden on mobile */}
-        <div className="hidden md:flex items-center gap-6">
-          <Link href="/features" className="text-muted-foreground hover:text-primary">
+        {/* Navigation Links */}
+        <div className="hidden md:flex items-center space-x-6">
+          <Link href="/features" className="text-muted-foreground hover:text-primary transition-colors">
             Features
           </Link>
-          <Link href="/pricing" className="text-muted-foreground hover:text-primary">
+          <Link href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">
             Pricing
           </Link>
-          <Link href="/about" className="text-muted-foreground hover:text-primary">
+          <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
             About
           </Link>
         </div>
 
         {/* Auth Section */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center space-x-4">
           {session ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -68,21 +67,20 @@ export function Navbar() {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={() => signOut()}>
-                  Log out
+                  Sign out
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
             <>
               <Link href="/login">
-                <Button variant="ghost">Log in</Button>
+                <Button variant="ghost">Sign in</Button>
               </Link>
               <Link href="/register">
                 <Button>Sign up</Button>
               </Link>
             </>
           )}
-          <ThemeToggle />
         </div>
       </div>
     </nav>

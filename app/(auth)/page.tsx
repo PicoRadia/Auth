@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { Button } from "@/app/components/ui/button"
 import { Input } from "@/app/components/ui/input"
 import { Label } from "@/app/components/ui/label"
+import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/app/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/app/components/ui/tabs"
 import { Separator } from "@/app/components/ui/separator"
@@ -19,15 +20,24 @@ export default function AuthPage() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <Card className="w-[350px]">
+        <div className="flex justify-center mb-4 mt-6">
+          <Image
+            src="/images/Frame18.png"
+            alt="Logo"
+            width={150}
+            height={150}
+            priority
+          />
+        </div>
         <CardHeader className="text-center">
-          <CardTitle>Authentification</CardTitle>
-          <CardDescription>Connectez-vous à votre compte ou créez-en un nouveau.</CardDescription>
+          <CardTitle>Authentication</CardTitle>
+          <CardDescription>Sign in to your account or create a new one.</CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="signin" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="signin">Connexion</TabsTrigger>
-              <TabsTrigger value="signup">Inscription</TabsTrigger>
+              <TabsTrigger value="signin">Sign In</TabsTrigger>
+              <TabsTrigger value="signup">Sign Up</TabsTrigger>
             </TabsList>
             <TabsContent value="signin">
               <SignInForm isLoading={isLoading} />
@@ -41,14 +51,14 @@ export default function AuthPage() {
               <Separator className="w-full" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">Ou</span>
+              <span className="bg-background px-2 text-muted-foreground">Or</span>
             </div>
           </div>
           <GoogleSignInButton isLoading={isLoading} />
         </CardContent>
         <CardFooter className="flex justify-center">
           <p className="text-sm text-gray-500 text-center">
-            En vous connectant, vous acceptez nos Conditions d&apos;utilisation et notre Politique de confidentialité.
+            By signing in, you agree to our Terms of Service and Privacy Policy.
           </p>
         </CardFooter>
       </Card>

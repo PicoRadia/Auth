@@ -41,17 +41,17 @@ export function SignUpForm({ isLoading = false }: SignUpFormProps) {
     <form onSubmit={handleSubmit}>
       <div className="grid w-full items-center gap-4">
         <div className="flex flex-col space-y-1.5">
-          <Label htmlFor="signup-email">E-mail</Label>
+          <Label htmlFor="signup-email">Email</Label>
           <Input 
             id="signup-email" 
             name="email" 
             type="email" 
-            placeholder="m@exemple.com" 
+            placeholder="m@example.com" 
             required 
           />
         </div>
         <div className="flex flex-col space-y-1.5">
-          <Label htmlFor="signup-password">Mot de passe</Label>
+          <Label htmlFor="signup-password">Password</Label>
           <Input 
             id="signup-password" 
             name="password" 
@@ -60,7 +60,7 @@ export function SignUpForm({ isLoading = false }: SignUpFormProps) {
           />
         </div>
         <div className="flex flex-col space-y-1.5">
-          <Label htmlFor="signup-confirm-password">Confirmer le mot de passe</Label>
+          <Label htmlFor="signup-confirm-password">Confirm Password</Label>
           <Input 
             id="signup-confirm-password" 
             name="confirmPassword" 
@@ -77,7 +77,7 @@ export function SignUpForm({ isLoading = false }: SignUpFormProps) {
         type="submit" 
         disabled={loading}
       >
-        {loading ? "Inscription en cours..." : "S'inscrire"}
+        {loading ? "Signing up..." : "Sign up"}
       </Button>
     </form>
   );
