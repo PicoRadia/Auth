@@ -119,11 +119,11 @@ const chartConfig = {
   },
   desktop: {
     label: 'Desktop',
-    color: 'hsl(var(--chart-1))'
+    color: '#57E4AB'
   },
   mobile: {
     label: 'Mobile',
-    color: 'hsl(var(--chart-2))'
+    color: '#3AA77D'
   }
 } satisfies ChartConfig;
 
@@ -131,13 +131,7 @@ export function BarGraph() {
   const [activeChart, setActiveChart] =
     React.useState<keyof typeof chartConfig>('desktop');
 
-  const total = React.useMemo(
-    () => ({
-      desktop: chartData.reduce((acc, curr) => acc + curr.desktop, 0),
-      mobile: chartData.reduce((acc, curr) => acc + curr.mobile, 0)
-    }),
-    []
-  );
+
 
   return (
     <Card>
@@ -149,8 +143,6 @@ export function BarGraph() {
           </CardDescription>
 
         </div>
-
-
 
       </CardHeader>
       <CardContent className="px-2 sm:p-6">

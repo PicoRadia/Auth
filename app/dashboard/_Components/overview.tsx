@@ -11,6 +11,7 @@ import {
 } from "@/app/components/ui/card";
 
 import { BarGraph } from "@/app/dashboard/_Components/Bar Chart";
+import { RecentSales } from "./recent-sales";
 
 export default async function OverViewPage() {
   const session = await auth();
@@ -133,6 +134,15 @@ export default async function OverViewPage() {
         <div className="col-span-4 mt-10">
           <BarGraph />
         </div>
+        <Card className="col-span-4 md:col-span-3  mt-10">
+          <CardHeader>
+            <CardTitle>Recent Sales</CardTitle>
+            <CardDescription>You made 265 sales this month.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <RecentSales />
+          </CardContent>
+        </Card>
       </div>
     </PageContainer>
   );
