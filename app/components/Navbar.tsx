@@ -23,16 +23,17 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
+    <nav className="fixed top-0 w-full border-b bg-[url('https://www.torquenews.com/sites/default/files/styles/amp_1200x675_16_9/public/images/cover_01_2.jpg?itok=zXfCvSX1')] bg-background/75 backdrop-blur supports-[backdrop-filter]:bg-background/40 z-50">
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 no-underline">
           <Image
-            src="/images/Frame 19.png"
+            src={theme === 'dark' ? '/images/Frame 19.png' : '/images/Frame18.png'}
             alt="Logo"
             width={80}
             height={80}
             className="object-contain"
+            priority
           />
         </Link>
 
