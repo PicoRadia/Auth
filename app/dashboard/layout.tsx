@@ -11,7 +11,7 @@ export default function DashboardLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="main-layout">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

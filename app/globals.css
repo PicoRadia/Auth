@@ -87,5 +87,23 @@ body {
   
 }
 
+@font-face {
+  font-family: 'Universal Sans Display';
+  src: url('https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff2') format('woff2'),
+       url('https://db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Universal Sans Display';
+  src: url('https://db.onlinewebfonts.com/t/eb9a2a9962c1c55b5899b88c3a6c8b45.woff2') format('woff2'),
+       url('https://db.onlinewebfonts.com/t/eb9a2a9962c1c55b5899b88c3a6c8b45.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 

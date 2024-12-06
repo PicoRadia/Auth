@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} main-layout`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} auth-layout`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

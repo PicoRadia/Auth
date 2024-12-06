@@ -84,6 +84,9 @@ export default {
   				},
   			},
   		},
+  		fontFamily: {
+  			sans: ['Universal Sans Display', 'system-ui', 'sans-serif'],
+  		},
   	}
   },
   plugins: [require("tailwindcss-animate")],
