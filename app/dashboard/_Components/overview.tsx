@@ -1,27 +1,29 @@
-import { auth } from "@/app/auth"
+import { auth } from "@/app/auth";
 
-import PageContainer from '@/app/components/page-container';
+import PageContainer from "@/app/components/page-container";
 
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle
-} from '@/app/components/ui/card';
+  CardTitle,
+} from "@/app/components/ui/card";
+
+import { BarGraph } from "@/app/dashboard/_Components/Bar Chart";
 
 export default async function OverViewPage() {
-  const session = await auth()
-  
+  const session = await auth();
+
   return (
     <PageContainer scrollable>
       <div className="space-y-2">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-2xl font-bold tracking-tight">
-            Hi, {session?.user?.name?.split(' ')[0]} 👋
+            Hi, {session?.user?.name?.split(" ")[0]} 👋
           </h2>
         </div>
-        <div  className="space-y-4">
+        <div className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -125,6 +127,11 @@ export default async function OverViewPage() {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7">
+        <div className="col-span-4 mt-10">
+          <BarGraph />
         </div>
       </div>
     </PageContainer>
