@@ -19,14 +19,22 @@ export default async function OverViewPage() {
   return (
     <PageContainer scrollable>
       <div className="space-y-2">
-        <div className="flex items-center justify-between space-y-2">
-          <h2 className="text-2xl font-bold tracking-tight">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-xl font-medium tracking-tight">
             Hi, {session?.user?.name?.split(" ")[0]} 👋
           </h2>
+          <div className="text-sm text-muted-foreground">
+            {new Date().toLocaleDateString('en-US', { 
+              weekday: 'long', 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            })}
+          </div>
         </div>
         <div className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <Card>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <Card className="transition-all hover:shadow-md">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
                   Total Revenue
