@@ -1,8 +1,6 @@
 import { auth } from "@/app/auth";
 import PageContainer from "@/app/components/page-container";
-import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { DashboardKPIs } from "./dashboard-kpis";
-import { ProcessDurationMetrics } from "./process-duration-metrics";
 
 export default async function OverViewPage() {
   const session = await auth();

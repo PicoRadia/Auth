@@ -1,1 +1,4 @@
 Sign out doesnt work
+FIx Choose the Step of the project to View
+fix Login
+fix fonts
