@@ -35,10 +35,10 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 223 97% 4%;  /* #020611 */
+    --background: 222 47% 11%;  /* #0f172a - Slate 900 */
     --foreground: 210 40% 98%;
     --card: 222 47% 11%;
-    --card-foreground: 0 0% 100%;
+    --card-foreground: 0 80% 100%;
     --popover: 223 97% 4%;
     --popover-foreground: 210 40% 98%;
     --primary: 157 71% 62%;
