@@ -61,9 +61,6 @@ body {
   .dark[data-theme="dark"] {
     --background: 240 10% 3%; /* #05040A */
   }
-  :root[class~="dark"] {
-    --foreground: 210 40% 98%; /* white in dark mode */
-  }
 }
 
 @layer utilities {
