@@ -32,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} dark:bg-[#0f172a]`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} dark:bg-[#0f172a] min-h-screen flex flex-col`}>
         <SessionProvider>
           <ThemeProvider
             attribute="class"
@@ -41,9 +41,13 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Navbar />
-            <main className="mx-6 mt-20 mb-6 md:mx-12 md:mt-24 lg:mx-24 lg:mt-28 xl:mx-32">
+            <main className="mx-6 mt-20 mb-6 md:mx-12 md:mt-24 lg:mx-24 lg:mt-28 xl:mx-32 flex-1">
               {children}
             </main>
+            <footer className="py-6 text-center text-sm text-muted-foreground border-t mx-6 md:mx-12 lg:mx-24 xl:mx-32">
+              <p className="mb-1">The Future of Energy is Solar ☀️</p>
+              <p>© Better Earth 2024. All rights reserved.</p>
+            </footer>
           </ThemeProvider>
         </SessionProvider>
       </body>
