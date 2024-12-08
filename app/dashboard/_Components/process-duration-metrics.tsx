@@ -6,7 +6,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { BarGraph } from "./Bar Chart";
 
 export function ProcessDurationMetrics() {
-  const periods = ['Daily', 'Weekly', 'Monthly', 'Quarterly'] as const;
   const metrics = [
     '🤝 Sale ⟶ Site Survey',
     '📏 Site Survey ⟶ Design Complete',
@@ -24,15 +23,14 @@ export function ProcessDurationMetrics() {
     '⚡ PTO Received ⟶ System Activated'
   ] as const;
 
-  const [selectedPeriod, setSelectedPeriod] = useState<typeof periods[number]>('Monthly');
   const [selectedMetric, setSelectedMetric] = useState<typeof metrics[number]>('🤝 Sale ⟶ Site Survey');
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between gap-4 p-4 bg-background border rounded-lg">
+      <div className="flex items-center justify-between gap-4 p-4  border rounded-lg">
         <div className="flex items-center gap-2">
-          <div className="dark:text-white text-black">Process Duration Metrics</div>
-          <span className="dark:text-gray-300 text-gray-600 ml-2">Average number of days for each process step</span>
+          <div className="dark:text-white text-black">Choose the Step of the project to View</div>
+          <span className="dark:text-gray-300 text-gray-600 ml-3">Average number of days for each process</span>
         </div>
         <div className="flex gap-2">
         
