@@ -54,8 +54,7 @@ export function ProcessDurationMetrics() {
       <Card>
         <CardContent className="p-6">
           <BarGraph 
-          
-            selectedMetric={selectedMetric}
+            selectedMetric={selectedMetric.includes('Sale') ? 'sales' : 'install'}
           />
         </CardContent>
       </Card>

@@ -8,7 +8,7 @@ export function DashboardFilters() {
       <div className="p-8 border rounded-lg space-y-8">
         <div className="flex items-center gap-2">
           <div className="dark:text-white text-black font-medium text-lg">Filters</div>
-          <span className="dark:text-gray-300 text-gray-600 ml-3">Customize your view</span>
+          <span className="dark:text-gray-300 text-gray-600 text-xs ml-3">Customize your view</span>
         </div>
 
         <div className="space-y-6">
@@ -32,7 +32,7 @@ export function DashboardFilters() {
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select utility provider" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="max-h-[200px] overflow-y-auto">
                 <SelectItem value="pge">Pacific Gas & Electric</SelectItem>
                 <SelectItem value="sce">Southern California Edison</SelectItem>
                 <SelectItem value="duke">Duke Energy</SelectItem>
@@ -83,7 +83,7 @@ export function DashboardFilters() {
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select company" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="max-h-[200px] overflow-y-auto">
                 <SelectItem value="clean-power">Clean Power</SelectItem>
                 <SelectItem value="100-mill-solar">100 Mill Solar</SelectItem>
                 <SelectItem value="lgcy">LGCY</SelectItem>
