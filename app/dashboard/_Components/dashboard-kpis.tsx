@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
-import { ClipboardList, Wrench, Activity, Percent, CheckCircle } from "lucide-react";
+import { ClipboardList, Wrench, Activity, CheckCircle } from "lucide-react";
 
 export function DashboardKPIs() {
   const [dashboardMetrics] = useState({
@@ -20,7 +20,7 @@ export function DashboardKPIs() {
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Agreement Signed</CardTitle>
+          <CardTitle className="text-sm font-medium">Total Projects</CardTitle>
           <ClipboardList className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
@@ -31,7 +31,18 @@ export function DashboardKPIs() {
         </CardContent>
       </Card>
 
-  
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardTitle className="text-sm font-medium">Total Installs</CardTitle>
+          <Wrench className="h-4 w-4 text-muted-foreground" />
+        </CardHeader>
+        <CardContent>
+          <div className="text-2xl font-bold">{dashboardMetrics.totalInstalls}</div>
+          <p className="text-xs text-muted-foreground">
+            +{dashboardMetrics.installIncrease}% from last month
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -55,19 +66,6 @@ export function DashboardKPIs() {
           <div className="text-2xl font-bold">{dashboardMetrics.inspectionsApproved}</div>
           <p className="text-xs text-muted-foreground">
             +{dashboardMetrics.inspectionIncrease}% from last month
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Total Installs</CardTitle>
-          <Wrench className="h-4 w-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{dashboardMetrics.totalInstalls}</div>
-          <p className="text-xs text-muted-foreground">
-            +{dashboardMetrics.installIncrease}% from last month
           </p>
         </CardContent>
       </Card>
