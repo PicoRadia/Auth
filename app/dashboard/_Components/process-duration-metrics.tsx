@@ -35,22 +35,7 @@ export function ProcessDurationMetrics() {
           <span className="dark:text-gray-300 text-gray-600 ml-2">Average number of days for each process step</span>
         </div>
         <div className="flex gap-2">
-          <Select
-            value={selectedPeriod}
-            onValueChange={(value) => setSelectedPeriod(value as typeof periods[number])}
-          >
-            <SelectTrigger className="dark:text-white">
-              <SelectValue placeholder="Select period" />
-            </SelectTrigger>
-            <SelectContent className="dark:text-white">
-              {periods.map((period) => (
-                <SelectItem key={period} value={period}>
-                  {period}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
+        
           <Select
             value={selectedMetric}
             onValueChange={(value) => setSelectedMetric(value as typeof metrics[number])}
@@ -71,7 +56,7 @@ export function ProcessDurationMetrics() {
       <Card>
         <CardContent className="p-6">
           <BarGraph 
-            selectedPeriod={selectedPeriod}
+          
             selectedMetric={selectedMetric}
           />
         </CardContent>
