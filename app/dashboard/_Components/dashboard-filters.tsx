@@ -27,6 +27,32 @@ export function DashboardFilters() {
           </div>
 
           <div className="space-y-3">
+            <label className="text-sm font-medium">Select Utility Provider</label>
+            <Select>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select utility provider" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="pge">Pacific Gas & Electric</SelectItem>
+                <SelectItem value="sce">Southern California Edison</SelectItem>
+                <SelectItem value="duke">Duke Energy</SelectItem>
+                <SelectItem value="oncor">Oncor Electric Delivery Company</SelectItem>
+                <SelectItem value="fpl">Florida Power & Light</SelectItem>
+                <SelectItem value="sdge">San Diego Gas & Electric</SelectItem>
+                <SelectItem value="aps">Arizona Public Service</SelectItem>
+                <SelectItem value="tec">Tampa Electric Company</SelectItem>
+                <SelectItem value="ladwp">Los Angeles Department of Water & Power</SelectItem>
+                <SelectItem value="srp">Salt River Project Power & Water</SelectItem>
+                <SelectItem value="iid">Imperial Irrigation District</SelectItem>
+                <SelectItem value="mid">Modesto Irrigation District</SelectItem>
+                <SelectItem value="tep">Tucson Electric Power</SelectItem>
+                <SelectItem value="lcec">Lee County Electric Cooperative</SelectItem>
+                <SelectItem value="smud">Sacramento Municipal Utility District</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="space-y-3">
             <label className="text-sm font-medium">Select Warehouse</label>
             <Select>
               <SelectTrigger className="w-full">
@@ -82,6 +108,7 @@ export function DashboardFilters() {
               </SelectContent>
             </Select>
           </div>
+          
         </div>
       </div>
     </div>

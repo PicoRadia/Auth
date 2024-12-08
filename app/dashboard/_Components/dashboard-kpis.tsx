@@ -21,10 +21,10 @@ export function DashboardKPIs() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Projects</CardTitle>
-          <ClipboardList className="h-4 w-4 text-muted-foreground" />
+          <ClipboardList className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{dashboardMetrics.totalProjects}</div>
+          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{dashboardMetrics.totalProjects}</div>
           <p className="text-xs text-muted-foreground">
             +{dashboardMetrics.projectIncrease}% from last month
           </p>
@@ -34,10 +34,10 @@ export function DashboardKPIs() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Survey Completed</CardTitle>
-          <Activity className="h-4 w-4 text-muted-foreground" />
+          <Activity className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{dashboardMetrics.surveysCompleted}</div>
+          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{dashboardMetrics.surveysCompleted}</div>
           <p className="text-xs text-muted-foreground">
             +{dashboardMetrics.surveysIncrease}% since last month
           </p>
@@ -47,24 +47,23 @@ export function DashboardKPIs() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Inspections Approved</CardTitle>
-          <CheckCircle className="h-4 w-4 text-muted-foreground" />
+          <CheckCircle className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{dashboardMetrics.inspectionsApproved}</div>
+          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{dashboardMetrics.inspectionsApproved}</div>
           <p className="text-xs text-muted-foreground">
             +{dashboardMetrics.inspectionIncrease}% from last month
           </p>
         </CardContent>
       </Card>
 
-
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Installs</CardTitle>
-          <Wrench className="h-4 w-4 text-muted-foreground" />
+          <Wrench className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{dashboardMetrics.totalInstalls}</div>
+          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{dashboardMetrics.totalInstalls}</div>
           <p className="text-xs text-muted-foreground">
             +{dashboardMetrics.installIncrease}% from last month
           </p>
