@@ -25,7 +25,7 @@ const lenderData: LenderDataItem[] = [
   { name: 'EverBright', value: 312, color: '#4ADE80' },
   { name: 'GoodLeap', value: 1518, color: '#FCD34D' },
   { name: 'LightReach', value: 1864, color: '#FB923C' }
-].sort((a, b) => a.value - b.value);
+].sort((a, b) => b.value - a.value);
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, value, payload }: any) => {
