@@ -25,10 +25,14 @@ const stageData = [
 export default function ProjectStatePage() {
   return (
     <div className="space-y-6">
-      <Card className="bg-[#0F172A]">
+      <Card className="dark:bg-[#0F172A] bg-white border">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-semibold text-gray-200">Project Pipeline Overview</CardTitle>
-          <p className="text-sm text-gray-400">Distribution of projects across different stages</p>
+          <CardTitle className="text-2xl font-semibold dark:text-gray-200 text-gray-900">
+            Project Pipeline Overview
+          </CardTitle>
+          <p className="text-sm dark:text-gray-400 text-gray-500">
+            Distribution of projects across different stages
+          </p>
         </CardHeader>
         <CardContent className="p-6">
           <div className="h-[600px] w-full">
@@ -42,7 +46,7 @@ export default function ProjectStatePage() {
                   type="number"
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: '#64748B', fontSize: 12 }}
+                  tick={{ fill: 'currentColor', opacity: 0.6, fontSize: 12 }}
                   tickCount={6}
                 />
                 <YAxis 
@@ -50,18 +54,24 @@ export default function ProjectStatePage() {
                   dataKey="name" 
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: '#64748B', fontSize: 12 }}
+                  tick={{ fill: 'currentColor', opacity: 0.6, fontSize: 12 }}
                   width={140}
                 />
                 <Tooltip
                   cursor={{ fill: 'rgba(30, 41, 59, 0.4)' }}
                   contentStyle={{
-                    backgroundColor: '#1E293B',
+                    backgroundColor: '#0F172A',
                     border: 'none',
                     borderRadius: '8px',
                     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                    color: '#E2E8F0'
+                    padding: '12px'
                   }}
+                  itemStyle={{ color: '#94A3B8' }}
+                  labelStyle={{ color: '#E2E8F0', marginBottom: '4px' }}
+                  formatter={(value: number, name: string) => [
+                    `${value}`,
+                    ''
+                  ]}
                 />
                 <Bar 
                   dataKey="value" 
