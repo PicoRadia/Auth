@@ -3,6 +3,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
+// Calculate total for percentages
+const total = 895; // Highest value
+
 const stageData = [
   { name: 'Completed', value: 895 },
   { name: 'Survey Scheduled', value: 764 },
@@ -20,19 +23,15 @@ const stageData = [
   { name: 'System Activated', value: 33 },
   { name: 'Inspection Approved', value: 31 },
   { name: 'Inspection Scheduled', value: 28 }
-].map(item => {
-  const total = 895; // Using the highest value as total
-  const percentage = ((item.value / total) * 100).toFixed(1);
-  return {
-    ...item,
-    percentage: `${percentage}%`
-  };
-});
+].map(item => ({
+  ...item,
+  percentage: ((item.value / total) * 100).toFixed(1)
+}));
 
 export default function ProjectStatePage() {
   return (
     <div className="space-y-6">
-      <Card className="dark:bg-[#0F172A] bg-white border-border">
+      <Card className="dark:bg-[#0F172A] bg-white border">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-semibold dark:text-gray-200 text-gray-900">
             Project Pipeline Overview
@@ -76,7 +75,7 @@ export default function ProjectStatePage() {
                                 {payload[0].payload.name}
                               </span>
                               <span className="text-sm text-muted-foreground">
-                                {payload[0].value} ({payload[0].payload.percentage})
+                                {payload[0].value} ({payload[0].payload.percentage}%)
                               </span>
                             </div>
                           </div>
@@ -91,8 +90,8 @@ export default function ProjectStatePage() {
                   fill="#3B82F6"
                   radius={[4, 4, 4, 4]}
                   barSize={20}
-                  label={(props) => {
-                    const { x, y, width, value, payload } = props;
+                  label={({ x, y, width, value, payload }) => {
+                    if (!payload) return null;
                     return (
                       <text
                         x={x + width + 5}
@@ -102,7 +101,7 @@ export default function ProjectStatePage() {
                         fontSize={12}
                         textAnchor="start"
                       >
-                        {value} ({payload.percentage})
+                        {value} ({payload.percentage}%)
                       </text>
                     );
                   }}
