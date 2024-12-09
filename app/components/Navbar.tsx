@@ -39,14 +39,14 @@ export function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:space-x-6">
-          <Link href="/dashboard" className="text-sm font-medium transition-colors hover:text-primary no-underline">
-            Dashboard
+          <Link href="/dashboard/timelines" className="text-sm font-medium transition-colors hover:text-primary no-underline">
+            Timelines
           </Link>
-          <Link href="/analytics" className="text-sm font-medium transition-colors hover:text-primary no-underline">
-            Analytics
+          <Link href="/dashboard/finance" className="text-sm font-medium transition-colors hover:text-primary no-underline">
+            Finance
           </Link>
-          <Link href="/settings" className="text-sm font-medium transition-colors hover:text-primary no-underline">
-            Settings
+          <Link href="/dashboard/project-state" className="text-sm font-medium transition-colors hover:text-primary no-underline">
+            Project State
           </Link>
         </div>
 
@@ -128,25 +128,25 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden border-t p-4 space-y-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <Link
-            href="/dashboard"
+            href="/dashboard/timelines"
             className="block px-4 py-2 text-sm hover:bg-accent rounded-md no-underline"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Dashboard
+            Timelines
           </Link>
           <Link
-            href="/analytics"
+            href="/dashboard/finance"
             className="block px-4 py-2 text-sm hover:bg-accent rounded-md no-underline"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Analytics
+            Finance
           </Link>
           <Link
-            href="/settings"
+            href="/dashboard/project-state"
             className="block px-4 py-2 text-sm hover:bg-accent rounded-md no-underline"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Settings
+            Project State
           </Link>
         </div>
       )}
