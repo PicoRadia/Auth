@@ -1,13 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
-import { ClipboardList, Wrench, Activity, CheckCircle, Zap, CheckCircle2, DollarSign } from "lucide-react";
+import { Activity, ClipboardList, Zap, CheckCircle2, DollarSign } from "lucide-react";
+
+// Add type for the sales data
+type SalesMetrics = {
+  currentMonth: number;
+  previousMonth: number;
+};
 
 export function DashboardKPIs() {
-  const [dashboardMetrics] = useState({
-    totalProjects: 231,
-    projectIncrease: 20.1,
+  const [salesMetrics, setSalesMetrics] = useState<SalesMetrics>({
+    currentMonth: 0,
+    previousMonth: 0
+  });
+  const [error, setError] = useState<string | null>(null);
+  
+  const [otherMetrics] = useState({
     totalInstalls: 25,
     installIncrease: 15.1,
     surveysCompleted: 36,
@@ -18,6 +28,31 @@ export function DashboardKPIs() {
     ppwIncrease: 8.2
   });
 
+  useEffect(() => {
+    async function fetchSalesData() {
+      try {
+        console.log('Fetching sales data...');
+        const response = await fetch('/api/metrics/sales');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('Received sales data:', data);
+        setSalesMetrics(data);
+      } catch (error) {
+        console.error('Failed to fetch sales metrics:', error);
+        setError('Failed to fetch sales metrics');
+      }
+    }
+
+    fetchSalesData();
+  }, []);
+
+  // Calculate percentage increase
+  const salesIncrease = salesMetrics.previousMonth > 0
+    ? ((salesMetrics.currentMonth - salesMetrics.previousMonth) / salesMetrics.previousMonth) * 100
+    : 0;
+
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
       <Card>
@@ -26,9 +61,11 @@ export function DashboardKPIs() {
           <ClipboardList className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{dashboardMetrics.totalProjects}</div>
+          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">
+            {salesMetrics.currentMonth}
+          </div>
           <p className="text-xs text-muted-foreground">
-            +{dashboardMetrics.projectIncrease}% from last month
+            {salesIncrease > 0 ? '+' : ''}{salesIncrease.toFixed(1)}% from last month
           </p>
         </CardContent>
       </Card>
@@ -39,9 +76,9 @@ export function DashboardKPIs() {
           <Activity className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{dashboardMetrics.surveysCompleted}</div>
+          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{otherMetrics.surveysCompleted}</div>
           <p className="text-xs text-muted-foreground">
-            +{dashboardMetrics.surveysIncrease}% since last month
+            +{otherMetrics.surveysIncrease}% since last month
           </p>
         </CardContent>
       </Card>
@@ -52,9 +89,9 @@ export function DashboardKPIs() {
           <CheckCircle2 className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{dashboardMetrics.inspectionsApproved}</div>
+          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{otherMetrics.inspectionsApproved}</div>
           <p className="text-xs text-muted-foreground">
-            +{dashboardMetrics.inspectionIncrease}% since last month
+            +{otherMetrics.inspectionIncrease}% since last month
           </p>
         </CardContent>
       </Card>
@@ -65,9 +102,9 @@ export function DashboardKPIs() {
           <Zap className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{dashboardMetrics.totalInstalls}</div>
+          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{otherMetrics.totalInstalls}</div>
           <p className="text-xs text-muted-foreground">
-            +{dashboardMetrics.installIncrease}% since last month
+            +{otherMetrics.installIncrease}% since last month
           </p>
         </CardContent>
       </Card>
@@ -78,9 +115,9 @@ export function DashboardKPIs() {
           <DollarSign className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">${dashboardMetrics.grossPPW}</div>
+          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">${otherMetrics.grossPPW}</div>
           <p className="text-xs text-muted-foreground">
-            +{dashboardMetrics.ppwIncrease}% since last month
+            +{otherMetrics.ppwIncrease}% since last month
           </p>
         </CardContent>
       </Card>
