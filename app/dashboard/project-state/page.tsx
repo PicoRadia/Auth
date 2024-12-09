@@ -20,12 +20,19 @@ const stageData = [
   { name: 'System Activated', value: 33 },
   { name: 'Inspection Approved', value: 31 },
   { name: 'Inspection Scheduled', value: 28 }
-];
+].map(item => {
+  const total = 895; // Using the highest value as total
+  const percentage = ((item.value / total) * 100).toFixed(1);
+  return {
+    ...item,
+    percentage: `${percentage}%`
+  };
+});
 
 export default function ProjectStatePage() {
   return (
     <div className="space-y-6">
-      <Card className="dark:bg-[#0F172A] bg-white border">
+      <Card className="dark:bg-[#0F172A] bg-white border-border">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-semibold dark:text-gray-200 text-gray-900">
             Project Pipeline Overview
@@ -58,26 +65,47 @@ export default function ProjectStatePage() {
                   width={140}
                 />
                 <Tooltip
-                  cursor={{ fill: 'rgba(30, 41, 59, 0.4)' }}
-                  contentStyle={{
-                    backgroundColor: '#0F172A',
-                    border: 'none',
-                    borderRadius: '8px',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                    padding: '12px'
+                  cursor={{ fill: 'currentColor', opacity: 0.1 }}
+                  content={({ active, payload }) => {
+                    if (active && payload && payload.length) {
+                      return (
+                        <div className="rounded-lg border bg-card p-2 shadow-sm">
+                          <div className="grid grid-cols-2 gap-2">
+                            <div className="flex flex-col">
+                              <span className="text-sm font-medium dark:text-gray-100">
+                                {payload[0].payload.name}
+                              </span>
+                              <span className="text-sm text-muted-foreground">
+                                {payload[0].value} ({payload[0].payload.percentage})
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+                    return null;
                   }}
-                  itemStyle={{ color: '#94A3B8' }}
-                  labelStyle={{ color: '#E2E8F0', marginBottom: '4px' }}
-                  formatter={(value: number, name: string) => [
-                    `${value}`,
-                    ''
-                  ]}
                 />
                 <Bar 
                   dataKey="value" 
                   fill="#3B82F6"
                   radius={[4, 4, 4, 4]}
                   barSize={20}
+                  label={(props) => {
+                    const { x, y, width, value, payload } = props;
+                    return (
+                      <text
+                        x={x + width + 5}
+                        y={y + 10}
+                        fill="currentColor"
+                        opacity={0.6}
+                        fontSize={12}
+                        textAnchor="start"
+                      >
+                        {value} ({payload.percentage})
+                      </text>
+                    );
+                  }}
                 />
               </BarChart>
             </ResponsiveContainer>

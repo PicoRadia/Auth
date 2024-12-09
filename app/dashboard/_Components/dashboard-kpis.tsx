@@ -20,7 +20,7 @@ export function DashboardKPIs() {
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Total Projects</CardTitle>
+          <CardTitle className="text-sm font-medium">Sales</CardTitle>
           <ClipboardList className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
