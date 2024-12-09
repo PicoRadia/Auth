@@ -39,7 +39,7 @@ export function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:space-x-6">
-          <Link href="/dashboard/timelines" className="text-sm font-medium transition-colors hover:text-primary no-underline">
+          <Link href="/dashboard" className="text-sm font-medium transition-colors hover:text-primary no-underline">
             Timelines
           </Link>
           <Link href="/dashboard/finance" className="text-sm font-medium transition-colors hover:text-primary no-underline">
@@ -128,7 +128,7 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden border-t p-4 space-y-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <Link
-            href="/dashboard/timelines"
+            href="/dashboard"
             className="block px-4 py-2 text-sm hover:bg-accent rounded-md no-underline"
             onClick={() => setIsMobileMenuOpen(false)}
           >
