@@ -8,16 +8,15 @@ import { SessionProvider } from "next-auth/react";
 import '@/styles/theme.css'
 import '@/styles/layout.css'
 
-const geistSans = localFont({
-  src: "../fonts/GeistMonoVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-
 const geistMono = localFont({
-  src: "../fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+  src: [
+    {
+      path: '../fonts/GeistMonoVF.woff',
+      weight: '100 900',
+      style: 'normal',
+    }
+  ],
+  variable: '--font-geist-mono'
 });
 
 export const metadata: Metadata = {
@@ -32,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} dark:bg-[#0f172a] min-h-screen flex flex-col`}>
+      <body className={`${geistMono.variable} dark:bg-[#0f172a] min-h-screen flex flex-col`}>
         <SessionProvider>
           <ThemeProvider
             attribute="class"

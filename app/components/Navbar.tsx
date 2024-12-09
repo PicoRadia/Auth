@@ -23,7 +23,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 w-full border-b bg-[url('https://www.torquenews.com/sites/default/files/styles/amp_1200x675_16_9/public/images/cover_01_2.jpg?itok=zXfCvSX1')] bg-background/75 backdrop-blur supports-[backdrop-filter]:bg-background/40 z-50">
+    <nav className="fixed top-0 w-full border-b bg-background/75 backdrop-blur supports-[backdrop-filter]:bg-background/40 z-50">
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 no-underline">
@@ -70,8 +70,14 @@ export function Navbar() {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-9 w-9 rounded-full">
                   <Avatar className="h-9 w-9">
-                    <AvatarImage src={session.user.image || ''} alt={session.user.name || ''} />
-                    <AvatarFallback>{session.user.name?.charAt(0) || 'U'}</AvatarFallback>
+                    <AvatarImage 
+                      src={session.user.image || ''} 
+                      alt={session.user.name || 'User avatar'} 
+                      referrerPolicy="no-referrer"
+                    />
+                    <AvatarFallback>
+                      {session.user.name?.charAt(0) || 'U'}
+                    </AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>

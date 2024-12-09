@@ -88,8 +88,8 @@ module.exports = {
         }
     },
     plugins: [
-        require("tailwindcss-animate"),
-        require('tailwind-scrollbar')
+        import('tailwindcss-animate'),
+        import('tailwind-scrollbar').then(plugin => plugin.default({ nocompatible: true }))
     ],
 }
 
