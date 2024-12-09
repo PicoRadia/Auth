@@ -38,6 +38,11 @@ export function DashboardKPIs() {
     ppwIncrease: 8.2
   });
 
+  const [inspectionMetrics, setInspectionMetrics] = useState<Metrics>({
+    currentMonth: 0,
+    previousMonth: 0
+  });
+
   useEffect(() => {
     async function fetchSalesData() {
       try {
@@ -74,6 +79,22 @@ export function DashboardKPIs() {
     fetchSurveyData();
   }, []);
 
+  useEffect(() => {
+    // Fetch inspection data
+    async function fetchInspectionData() {
+      try {
+        const response = await fetch('/api/metrics/inspections');
+        if (!response.ok) throw new Error('Failed to fetch inspection data');
+        const data = await response.json();
+        setInspectionMetrics(data);
+      } catch (error) {
+        console.error('Failed to fetch inspection metrics:', error);
+      }
+    }
+
+    fetchInspectionData();
+  }, []);
+
   // Calculate percentage increase
   const salesIncrease = salesMetrics.previousMonth > 0
     ? ((salesMetrics.currentMonth - salesMetrics.previousMonth) / salesMetrics.previousMonth) * 100
@@ -82,6 +103,11 @@ export function DashboardKPIs() {
   // Calculate percentage increase for surveys
   const surveyIncrease = surveyMetrics.previousMonth > 0
     ? ((surveyMetrics.currentMonth - surveyMetrics.previousMonth) / surveyMetrics.previousMonth) * 100
+    : 0;
+
+  // Calculate percentage increase for inspections
+  const inspectionIncrease = inspectionMetrics.previousMonth > 0
+    ? ((inspectionMetrics.currentMonth - inspectionMetrics.previousMonth) / inspectionMetrics.previousMonth) * 100
     : 0;
 
   return (
@@ -122,9 +148,11 @@ export function DashboardKPIs() {
           <CheckCircle2 className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{otherMetrics.inspectionsApproved}</div>
+          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">
+            {inspectionMetrics.currentMonth}
+          </div>
           <p className="text-xs text-muted-foreground">
-            +{otherMetrics.inspectionIncrease}% since last month
+            {inspectionIncrease > 0 ? '+' : ''}{inspectionIncrease.toFixed(1)}% since last month
           </p>
         </CardContent>
       </Card>
