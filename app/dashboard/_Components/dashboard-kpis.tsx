@@ -10,6 +10,11 @@ type SalesMetrics = {
   previousMonth: number;
 };
 
+type Metrics = {
+  currentMonth: number;
+  previousMonth: number;
+};
+
 export function DashboardKPIs() {
   const [salesMetrics, setSalesMetrics] = useState<SalesMetrics>({
     currentMonth: 0,
@@ -17,6 +22,11 @@ export function DashboardKPIs() {
   });
   const [error, setError] = useState<string | null>(null);
   
+  const [surveyMetrics, setSurveyMetrics] = useState<Metrics>({
+    currentMonth: 0,
+    previousMonth: 0
+  });
+
   const [otherMetrics] = useState({
     totalInstalls: 25,
     installIncrease: 15.1,
@@ -48,9 +58,30 @@ export function DashboardKPIs() {
     fetchSalesData();
   }, []);
 
+  useEffect(() => {
+    // Fetch survey data
+    async function fetchSurveyData() {
+      try {
+        const response = await fetch('/api/metrics/surveys');
+        if (!response.ok) throw new Error('Failed to fetch survey data');
+        const data = await response.json();
+        setSurveyMetrics(data);
+      } catch (error) {
+        console.error('Failed to fetch survey metrics:', error);
+      }
+    }
+
+    fetchSurveyData();
+  }, []);
+
   // Calculate percentage increase
   const salesIncrease = salesMetrics.previousMonth > 0
     ? ((salesMetrics.currentMonth - salesMetrics.previousMonth) / salesMetrics.previousMonth) * 100
+    : 0;
+
+  // Calculate percentage increase for surveys
+  const surveyIncrease = surveyMetrics.previousMonth > 0
+    ? ((surveyMetrics.currentMonth - surveyMetrics.previousMonth) / surveyMetrics.previousMonth) * 100
     : 0;
 
   return (
@@ -76,9 +107,11 @@ export function DashboardKPIs() {
           <Activity className="h-4 w-4 text-[#2ED3A0] dark:text-[#71F3BB]" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">{otherMetrics.surveysCompleted}</div>
+          <div className="text-2xl font-bold text-[#2ED3A0] dark:text-[#71F3BB]">
+            {surveyMetrics.currentMonth}
+          </div>
           <p className="text-xs text-muted-foreground">
-            +{otherMetrics.surveysIncrease}% since last month
+            {surveyIncrease > 0 ? '+' : ''}{surveyIncrease.toFixed(1)}% since last month
           </p>
         </CardContent>
       </Card>
