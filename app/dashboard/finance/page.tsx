@@ -5,10 +5,10 @@ import { DollarSign, TrendingUp, CreditCard, PiggyBank } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 
 const financingData = [
-  { name: 'PPA', value: 2276, color: '#2E7DD1' },
-  { name: 'Lease', value: 1018, color: '#71F3BB' },
-  { name: 'Loan', value: 605, color: '#9333EA' },
-  { name: 'Cash', value: 149, color: '#2563EB' }
+  { name: '⚡ PPA', value: 2276, color: '#98F7B7' },
+  { name: '📋 Lease', value: 1018, color: '#37E2A0' },
+  { name: '🏦 Loan', value: 605, color: '#3B82F6' },
+  { name: '💵 Cash', value: 149, color: '#7DD3FC' }
 ];
 
 const RADIAN = Math.PI / 180;
@@ -28,6 +28,23 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
     >
       {value}
     </text>
+  );
+};
+
+const CustomLegend = ({ payload }: any) => {
+  return (
+    <div className="flex justify-center gap-6 mt-4">
+      {payload.map((entry: any, index: number) => (
+        <div key={`legend-${index}`} className="flex items-center gap-2">
+          <div 
+            className="w-4 h-0.5" 
+            style={{ backgroundColor: entry.color }}
+          />
+          <span className="text-sm text-gray-400">{entry.value}</span>
+        </div>
+      ))}
+    </div>
+    
   );
 };
 
@@ -58,12 +75,7 @@ export default function FinancePage() {
               </Pie>
               <Tooltip />
               <Legend />
-              <Legend
-                iconType="circle"
-                layout="vertical"
-                verticalAlign="middle"
-                align="right"
-              />
+              <CustomLegend />
               <Tooltip />
               <ResponsiveContainer>
                 <Pie
